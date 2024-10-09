@@ -23,16 +23,14 @@ target_link_libraries(GraphicsFramework GLFW)	#Add library to framework
 
 #Add libraries for d3d11
 #Add Direct3D11 libraries (static libraries)
-find_library("d3d11.lib" PATH "C:/Program Files (x86)/Windows Kits/10/Lib/10.0.22000.0/")
-find_library("dxgi.lib" PATH "C:/Program Files( x86)/Windows Kits/10/Lib/10.0.22000.0/")
-find_library("d3dcompiler.lib" PATH "C:/Program Files( x86)/Windows Kits/10/Lib/10.0.22000.0/")
-find_library("winmm.lib" PATH "C:/Program Files( x86)/Windows Kits/10/Lib/10.0.22000.0/")
-find_library("dxguid.lib" PATH "C:/Program Files( x86)/Windows Kits/10/Lib/10.0.22000.0/")
+find_library("d3d11.lib" PATH "$ENV{DXSDK_DIR}/Lib")
+find_library("dxgi.lib" PATH "$ENV{DXSDK_DIR}/Lib")
+find_library("d3dcompiler.lib" PATH "$ENV{DXSDK_DIR}/Lib")
+find_library("dxguid.lib" PATH "$ENV{DXSDK_DIR}/Lib")
 
 target_link_libraries(GraphicsFramework d3d11)
 target_link_libraries(GraphicsFramework dxgi)
 target_link_libraries(GraphicsFramework d3dcompiler)
-target_link_libraries(GraphicsFramework winmm)
 target_link_libraries(GraphicsFramework dxguid)
 
 #Add custom target to copy shaders folder into the output directory
