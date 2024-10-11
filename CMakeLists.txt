@@ -1,5 +1,5 @@
 ﻿
-list(APPEND GRAPHICS "engine/test.cpp")
+list(APPEND GRAPHICS "engine/Window.cpp")
 
 cmake_minimum_required (VERSION 3.8)
 
