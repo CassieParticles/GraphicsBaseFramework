@@ -15,7 +15,7 @@ class Window
 	using ComPtr = Microsoft::WRL::ComPtr<T>;
 public:
 	Window(const std::string& windowTitle, int windowWidth, int windowHeight);
-	Window(Window& window) = delete;
+	Window(Window& window) = delete;	//Do not copy the window, should only be one
 	Window(Window&& other);
 	~Window();
 

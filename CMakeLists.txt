@@ -1,5 +1,6 @@
 ﻿
 list(APPEND GRAPHICS "engine/Window.cpp")
+list(APPEND GRAPHICS "engine/Mesh.cpp")
 
 cmake_minimum_required (VERSION 3.8)
 
