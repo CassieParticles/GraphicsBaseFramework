@@ -24,7 +24,7 @@ public:
 
 	Mesh();
 	Mesh(ID3D11Device* device,MeshVertex* meshVertices, int vertexCount, int* indices, int indexCount, bool dynamic);
-	Mesh(Mesh& other) = delete;	//Copy constructor impractical
+	Mesh(Mesh& other) = delete;	//Copy constructor disabled, cannot copy gpu data without deviceContext
 	Mesh(Mesh&& other) noexcept;
 	~Mesh();
 
