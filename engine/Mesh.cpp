@@ -29,7 +29,7 @@ Mesh::~Mesh()
 void Mesh::addVertices(ID3D11Device* device, MeshVertex* meshVertices, int vertexCount, int* indices, int indexCount, bool dynamic)
 {
 	//Mesh has already been created, cancel
-	if (!vertexBuffer)
+	if (vertexBuffer)
 	{
 		std::cerr << "Error: mesh has already been created\n";
 		return;

@@ -14,10 +14,10 @@ class Mesh
 	using ComPtr = Microsoft::WRL::ComPtr<T>;
 public:
 	//Publically accessible, but within the Mesh namespace
-	struct MeshVertex	//
+	struct MeshVertex	//32 bytes
 	{
-		DirectX::XMFLOAT4 position;
-		DirectX::XMFLOAT4 normal;
+		DirectX::XMFLOAT3 position;
+		DirectX::XMFLOAT3 normal;
 		DirectX::XMFLOAT2 uv;
 	};
 
