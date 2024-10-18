@@ -69,5 +69,5 @@ void Mesh::useMesh(ID3D11DeviceContext* deviceContext)
 	UINT offset = 0;
 
 	deviceContext->IASetVertexBuffers(0, 1, vertexBuffer.GetAddressOf(), &stride, &offset);
-	deviceContext->IASetIndexBuffer(indexBuffer.Get(), DXGI_FORMAT_R32_UINT, &offset);
+	deviceContext->IASetIndexBuffer(indexBuffer.Get(), DXGI_FORMAT_R32_UINT, offset);
 }

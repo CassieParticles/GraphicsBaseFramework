@@ -19,7 +19,6 @@ public:
 		DirectX::XMFLOAT4 position;
 		DirectX::XMFLOAT4 normal;
 		DirectX::XMFLOAT2 uv;
-		float padding[2];	//can be ignored, used to make struct size match 16 bytes
 	};
 
 	Mesh();

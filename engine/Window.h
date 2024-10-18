@@ -31,6 +31,9 @@ public:
 	int getWidth() { return width; }
 	int getHeight() { return height; }
 
+	ComPtr<ID3D11Device> getDevice() { return device; }
+	ComPtr<ID3D11DeviceContext> getDeviceContext() { return deviceContext; }
+
 protected:
 	//Window data
 	GLFWwindow* window;
