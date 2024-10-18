@@ -1,5 +1,6 @@
 ﻿
 list(APPEND GRAPHICS "engine/Window.cpp")
+list(APPEND GRAPHICS "engine/View.cpp")
 
 list(APPEND GRAPHICS "engine/Pipeline/Mesh.cpp")
 list(APPEND GRAPHICS "engine/Pipeline/InputLayout.cpp")

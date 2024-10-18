@@ -12,11 +12,18 @@ struct VSOutput
     float2 uv : TEXCOORD0;
 };
 
+cbuffer CameraMatrix : register(b0)
+{
+    float4x4 cameraMatrix;
+};
+
 VSOutput Main(VSInput input)
 {
     VSOutput outVal;
-    outVal.position = float4(input.position,1);
+    outVal.position = mul(cameraMatrix, float4(input.position, 1));
+    
     outVal.normal = input.normal;
+    
     outVal.uv = input.uv;
     return outVal;
 }
