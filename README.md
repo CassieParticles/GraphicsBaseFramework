@@ -35,4 +35,5 @@ View:
 Basic shaders:
 	-Shaders written for rendering object with lighting and material
 
-
+Renderer:
+	-Allow support for deffered rendering?
