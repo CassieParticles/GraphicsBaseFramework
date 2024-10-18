@@ -1,8 +1,8 @@
 struct VSInput
 {
-    float4 position;
-    float4 normal;
-    float2 uv;
+    float4 position : POSITION0;
+    float4 normal : NORMAL0;
+    float2 uv : TEXCOORD0;
 };
 
 struct VSOutput
@@ -14,7 +14,7 @@ struct VSOutput
 VSOutput Main(VSInput input)
 {
     VSOutput outVal;
-    outVal.position = float4(input.position, 0, 1);
+    outVal.position = float4(input.position);
     outVal.uv = input.uv;
     return outVal;
 }

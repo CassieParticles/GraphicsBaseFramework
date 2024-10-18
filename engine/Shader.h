@@ -44,7 +44,6 @@ class VertexShader :public Shader
 public:
 	VertexShader(ID3D11Device* device, const std::wstring& filePath);
 	~VertexShader() = default;
-	//TODO: Add move constructor
 	
 	//Bind shader to pipeline
 	void bindShader(ID3D11DeviceContext* deviceContext) override final;
@@ -59,5 +58,13 @@ protected:
 class PixelShader : public Shader
 {
 public:
-	//PixelShader(ID3D11* device, const std::string& filePath);
+	PixelShader(ID3D11Device* device, const std::wstring& filePath);
+	~PixelShader() = default;
+
+	void bindShader(ID3D11DeviceContext* deviceContext) override final;
+
+protected:
+	ComPtr<ID3D11PixelShader> pixelShader;
+
+	void CompileShader(ID3D11Device* device, const std::wstring& filePath) override final;
 };

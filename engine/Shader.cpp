@@ -48,3 +48,25 @@ void VertexShader::CompileShader(ID3D11Device* device, const std::wstring& fileP
 		throw;
 	}
 }
+
+PixelShader::PixelShader(ID3D11Device* device, const std::wstring& filePath)
+{
+	CompileShader(device, filePath);
+}
+
+void PixelShader::bindShader(ID3D11DeviceContext* deviceContext)
+{
+	deviceContext->PSSetShader(pixelShader.Get(), nullptr, 0);
+}
+
+void PixelShader::CompileShader(ID3D11Device* device, const std::wstring& filePath)
+{
+	//Compile shader into bytecode
+	compileByteCode(device, filePath, "ps_5_0", byteCode);
+	HRESULT errorCode = device->CreatePixelShader(byteCode->GetBufferPointer(), byteCode->GetBufferSize(), nullptr, &pixelShader);
+	if (FAILED(errorCode))
+	{
+		std::cerr << "Failed to create pixel shader\n";
+		throw;
+	}
+}
