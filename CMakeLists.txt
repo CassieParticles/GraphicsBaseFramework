@@ -13,6 +13,7 @@ add_library(GraphicsFramework ${GRAPHICS})
 #Include framework header files and libraries used within framework
 target_include_directories(GraphicsFramework PUBLIC "${CMAKE_CURRENT_LIST_DIR}")
 target_include_directories(GraphicsFramework PUBLIC "${CMAKE_CURRENT_LIST_DIR}/libraries/includes")
+target_include_directories(GraphicsFramework PUBLIC "${CMAKE_CURRENT_LIST_DIR}/engine/VectorMathOverloads.h")
 
 #Define macros "debug" or "release" for the debug and release builds of the project
 if(CMAKE_BUILD_TYPE MATCHES "Debug")

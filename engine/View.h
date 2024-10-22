@@ -17,6 +17,19 @@ public:
 	void setProjectionMatrixPespective(float FOV, float aspectRatio, float nearZ, float farZ);
 	void setProjectionMatrixOrthographic(float viewWidth, float viewHeight, float nearZ, float farZ);
 
+	DirectX::XMFLOAT3 setPosition(DirectX::XMFLOAT3 position) { return this->position = position; }
+	DirectX::XMFLOAT3 setPosition(float x, float y, float z) { return this->position = DirectX::XMFLOAT3(x, y, z); }
+	DirectX::XMFLOAT3 setPosition(DirectX::XMVECTOR position) { DirectX::XMStoreFloat3(&this->position, position); return this->position; }
+	DirectX::XMFLOAT3 getPosition() { return position; }
+	DirectX::XMVECTOR loadPosition() { return DirectX::XMLoadFloat3(&position); }
+
+	DirectX::XMFLOAT3 setRotation(DirectX::XMFLOAT3 rotation) { return this->rotation = rotation; }
+	DirectX::XMFLOAT3 setRotation(float x, float y, float z) { return this->rotation = DirectX::XMFLOAT3(x, y, z); }
+	DirectX::XMFLOAT3 setRotation(DirectX::XMVECTOR rotation) { DirectX::XMStoreFloat3(&this->rotation, rotation); return this->rotation; }
+	DirectX::XMFLOAT3 getRotation() { return rotation; }
+	DirectX::XMVECTOR loadRotation() { return DirectX::XMLoadFloat3(&rotation);}
+
+
 	DirectX::XMMATRIX calcViewMatrix();
 
 	void updateView(ID3D11DeviceContext* deviceContext);
