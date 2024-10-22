@@ -1,13 +1,18 @@
 #pragma once
 
 #include <string>
+#include <memory>
 
 #include <d3d11.h>
 #include <dxgi1_3.h>
 #include <wrl.h>
 #include <DirectXMath.h>
 
+
+
+
 class GLFWwindow;
+class Input;
 
 class Window
 {
@@ -35,9 +40,17 @@ public:
 	ComPtr<ID3D11Device> getDevice() { return device; }
 	ComPtr<ID3D11DeviceContext> getDeviceContext() { return deviceContext; }
 
+	//Get a pointer to the input
+	Input* getInput() { return input.get(); }
+
+	//Friend function from input, called this way so only window can update the input
+	void UpdateF(Input& input);
 protected:
+	
 	//Window data
 	GLFWwindow* window;
+
+	std::unique_ptr<Input> input;
 
 	int width{};
 	int height{};
@@ -46,6 +59,8 @@ protected:
 
 	void setSize(int width, int height);
 	static void handleResize(GLFWwindow* window, int width, int height);
+
+
 
 	//DirectX objects
 	ComPtr<IDXGIFactory2> factory;

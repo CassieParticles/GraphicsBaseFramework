@@ -8,6 +8,8 @@
 
 #include <iostream>
 
+#include <engine/Input.h>
+
 void checkError(HRESULT errorCode, const std::string& errorMessage)
 {
 	if (FAILED(errorCode))
@@ -106,6 +108,8 @@ Window::Window(const std::string& windowTitle, int windowWidth, int windowHeight
 	viewport.Height = height;
 	viewport.MinDepth = 0;
 	viewport.MaxDepth = 1;
+
+	input = std::make_unique<Input>(this);
 }
 
 Window::Window(Window&& other)
@@ -128,6 +132,8 @@ Window::Window(Window&& other)
 	backBufferDSV = std::move(other.backBufferDSV);
 	depthStencilState = std::move(other.depthStencilState);
 	viewport = std::move(other.viewport);
+
+	input = std::move(other.input);
 }
 
 Window::~Window()
@@ -146,21 +152,25 @@ void Window::clearBackBuffer()
 	//clear the render target view, (cast colour to float array for function)
 	deviceContext->ClearRenderTargetView(backBufferRTV.Get(), (float*) &clearColour);
 	deviceContext->ClearDepthStencilView(backBufferDSV.Get(), D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
+
+	UpdateF(*input);
 }
 
 void Window::presentBackBuffer()
 {
 	//TODO: allow user to choose if they want vsync enabled
 	swapChain->Present(0, DXGI_PRESENT_ALLOW_TEARING);
-
-	//TODO: Move poll events to window event manager
-	glfwPollEvents();
 }
 
 void Window::bindRenderTarget()
 {
 	deviceContext->OMSetRenderTargets(1, backBufferRTV.GetAddressOf(), backBufferDSV.Get());
 	deviceContext->RSSetViewports(1, &viewport);
+}
+
+void Window::UpdateF(Input& input)
+{
+	input.Update();
 }
 
 void Window::setSize(int width, int height)
