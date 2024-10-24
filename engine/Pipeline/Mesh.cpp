@@ -34,6 +34,7 @@ void Mesh::addVertices(ID3D11Device* device, MeshVertex* meshVertices, int verte
 		std::cerr << "Error: mesh has already been created\n";
 		return;
 	}
+	this->vertexCount = indexCount;
 	//Create vertex buffer
 	D3D11_BUFFER_DESC vertexDesc{};
 	vertexDesc.ByteWidth = sizeof(MeshVertex) * vertexCount;

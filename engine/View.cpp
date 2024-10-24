@@ -43,8 +43,12 @@ void View::setProjectionMatrixOrthographic(float viewWidth, float viewHeight, fl
 
 DirectX::XMMATRIX View::calcViewMatrix()
 {
-	DirectX::XMVECTOR viewDirection = { cos(rotation.x) * sin(rotation.y), sin(rotation.x),cos(rotation.x) * cos(rotation.y) };
-	return DirectX::XMMatrixLookToLH(DirectX::XMLoadFloat3(&position), viewDirection, DirectX::XMVECTOR{0,1,0});
+	//DirectX::XMVECTOR viewDirection = { cos(rotation.x) * sin(rotation.y), sin(rotation.x),cos(rotation.x) * cos(rotation.y) };
+	DirectX::XMMATRIX rotationMatrix = DirectX::XMMatrixRotationRollPitchYaw(rotation.x, rotation.y, rotation.z);
+
+	DirectX::XMVECTOR viewDirection = DirectX::XMVector3TransformCoord(DirectX::XMVECTOR{0,0,1,1},rotationMatrix);
+	DirectX::XMVECTOR upDirection = DirectX::XMVector3TransformCoord(DirectX::XMVECTOR{0, 1, 0, 1}, rotationMatrix);
+	return DirectX::XMMatrixLookToLH(DirectX::XMLoadFloat3(&position), viewDirection, upDirection);
 }
 
 void View::updateView(ID3D11DeviceContext* deviceContext)
