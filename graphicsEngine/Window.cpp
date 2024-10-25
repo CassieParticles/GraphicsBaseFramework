@@ -8,7 +8,7 @@
 
 #include <iostream>
 
-#include <engine/Input.h>
+#include <graphicsEngine/Input.h>
 
 void checkError(HRESULT errorCode, const std::string& errorMessage)
 {

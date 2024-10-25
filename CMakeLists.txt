@@ -1,11 +1,11 @@
 ﻿
-list(APPEND GRAPHICS "engine/Window.cpp")
-list(APPEND GRAPHICS "engine/View.cpp")
-list(APPEND GRAPHICS "engine//Input.cpp")
+list(APPEND GRAPHICS "graphicsEngine/Window.cpp")
+list(APPEND GRAPHICS "graphicsEngine/View.cpp")
+list(APPEND GRAPHICS "graphicsEngine/Input.cpp")
 
-list(APPEND GRAPHICS "engine/Pipeline/Mesh.cpp")
-list(APPEND GRAPHICS "engine/Pipeline/InputLayout.cpp")
-list(APPEND GRAPHICS "engine/Pipeline/Shader.cpp")
+list(APPEND GRAPHICS "graphicsEngine/Pipeline/Mesh.cpp")
+list(APPEND GRAPHICS "graphicsEngine/Pipeline/InputLayout.cpp")
+list(APPEND GRAPHICS "graphicsEngine/Pipeline/Shader.cpp")
 
 cmake_minimum_required (VERSION 3.8)
 

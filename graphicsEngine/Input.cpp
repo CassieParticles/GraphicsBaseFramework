@@ -1,6 +1,6 @@
 #include "Input.h"
 
-#include <engine/Window.h>
+#include <graphicsEngine/Window.h>
 
 #include <iostream>
 #include <glfw3.h>
