@@ -17,10 +17,17 @@ cbuffer CameraMatrix : register(b0)
     float4x4 cameraMatrix;
 };
 
+cbuffer WorldMatrix : register(b1)
+{
+    float4x4 worldMatrix;
+}
+
 VSOutput Main(VSInput input)
 {
     VSOutput outVal;
-    outVal.position = mul(cameraMatrix, float4(input.position, 1));
+    outVal.position = float4(input.position, 1.0);
+    outVal.position = mul(worldMatrix, outVal.position);//Into world space
+    outVal.position = mul(cameraMatrix, outVal.position);//Into clip space
     
     outVal.normal = input.normal;
     
