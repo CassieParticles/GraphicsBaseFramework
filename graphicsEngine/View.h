@@ -9,7 +9,7 @@ class View
 	template <typename T>
 	using ComPtr = Microsoft::WRL::ComPtr<T>;
 public:
-	View(ID3D11Device* device);
+	View();
 	View(View& other) = delete;	//cannot have copy constructor, needs device to create new buffer
 	View(View&& other);
 	~View() = default;

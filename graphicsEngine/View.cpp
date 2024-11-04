@@ -3,7 +3,7 @@
 
 #include <utility>
 
-View::View(ID3D11Device* device) : projectionMatrix{}
+View::View() : projectionMatrix{}
 {
 	//Create the camera view cbuffer
 }
