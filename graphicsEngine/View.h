@@ -13,6 +13,7 @@ public:
 	View(View& other) = delete;	//cannot have copy constructor, needs device to create new buffer
 	View(View&& other);
 	~View() = default;
+	View& operator=(View& other) { return other; }
 
 	void setProjectionMatrixPespective(float FOV, float aspectRatio, float nearZ, float farZ);
 	void setProjectionMatrixOrthographic(float viewWidth, float viewHeight, float nearZ, float farZ);

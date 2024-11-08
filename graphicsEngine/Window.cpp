@@ -88,7 +88,7 @@ Window::Window(const std::string& windowTitle, int windowWidth, int windowHeight
 		height,
 		1,
 		1,
-		DXGI_FORMAT_D32_FLOAT,
+		DXGI_FORMAT_D32_FLOAT,	//TODO: Change to allow stencil buffer
 		{1,0},
 		D3D11_USAGE_DEFAULT,
 		D3D11_BIND_DEPTH_STENCIL,
