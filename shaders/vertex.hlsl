@@ -30,6 +30,8 @@ VSOutput Main(VSInput input)
     outVal.position = mul(cameraMatrix, outVal.position);//Into clip space
     
     outVal.normal = input.normal;
+    outVal.normal = mul((float3x3) worldMatrix, outVal.normal);
+    
     
     outVal.uv = input.uv;
     return outVal;

@@ -13,6 +13,6 @@ struct PSOutput
 
 PSOutput Main(PSInput input)
 {
-    PSOutput output = { float3(1,0,0), 1 };
+    PSOutput output = { input.normal / 2 + 0.5, 1 };
     return output;
 }
