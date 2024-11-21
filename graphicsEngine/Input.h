@@ -3,13 +3,13 @@
 
 class GLFWwindow;
 
-class Input
+class InputHandler
 {
 public:
-	Input(Window* window);
-	Input(Input& other) = delete;	//No copy constructor, should only be one input
-	Input(Input&& other);
-	~Input();
+	InputHandler(Window* window);
+	InputHandler(InputHandler& other) = delete;	//No copy constructor, should only be one input
+	InputHandler(InputHandler&& other);
+	~InputHandler();
 
 	//Key is currently held down
 	bool getKeyDown(int key) { return keysCurrent[key]; }
@@ -30,7 +30,7 @@ public:
 	void Update();
 
 protected:
-	friend void Window::UpdateF(Input& input);
+	friend void Window::UpdateF(InputHandler& input);
 	Window* window;
 	//Ensure only one instance exists
 	static bool instantiated;

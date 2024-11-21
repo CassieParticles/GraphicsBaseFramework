@@ -5,29 +5,29 @@
 #include <iostream>
 #include <glfw3.h>
 
-bool Input::instantiated = false;
+bool InputHandler::instantiated = false;
 
-Input::Input(Window* window)
+InputHandler::InputHandler(Window* window)
 {
 	this->window = window;
 	keysCurrent = new bool[GLFW_KEY_LAST];
 	keysPrevious = new bool[GLFW_KEY_LAST];
 }
 
-Input::Input(Input&& other)
+InputHandler::InputHandler(InputHandler&& other)
 {
 	window = other.window;
 	keysCurrent = other.keysCurrent;
 	keysPrevious = other.keysPrevious;
 }
 
-Input::~Input()
+InputHandler::~InputHandler()
 {
 	delete[] keysCurrent;
 	delete[] keysPrevious;
 }
 
-void Input::Update()
+void InputHandler::Update()
 {
 	glfwPollEvents();
 

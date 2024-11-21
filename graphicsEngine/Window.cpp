@@ -109,7 +109,7 @@ Window::Window(const std::string& windowTitle, int windowWidth, int windowHeight
 	viewport.MinDepth = 0;
 	viewport.MaxDepth = 1;
 
-	input = std::make_unique<Input>(this);
+	input = std::make_unique<InputHandler>(this);
 }
 
 Window::Window(Window&& other)
@@ -168,7 +168,7 @@ void Window::bindRenderTarget()
 	deviceContext->RSSetViewports(1, &viewport);
 }
 
-void Window::UpdateF(Input& input)
+void Window::UpdateF(InputHandler& input)
 {
 	input.Update();
 }

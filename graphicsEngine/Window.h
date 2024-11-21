@@ -12,7 +12,7 @@
 
 
 class GLFWwindow;
-class Input;
+class InputHandler;
 
 class Window
 {
@@ -41,16 +41,16 @@ public:
 	ComPtr<ID3D11DeviceContext> getDeviceContext() { return deviceContext; }
 
 	//Get a pointer to the input
-	Input* getInput() { return input.get(); }
+	InputHandler* getInput() { return input.get(); }
 
 	//Friend function from input, called this way so only window can update the input
-	void UpdateF(Input& input);
+	void UpdateF(InputHandler& input);
 protected:
 	
 	//Window data
 	GLFWwindow* window;
 
-	std::unique_ptr<Input> input;
+	std::unique_ptr<InputHandler> input;
 
 	int width{};
 	int height{};
