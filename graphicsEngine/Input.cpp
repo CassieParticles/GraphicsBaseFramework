@@ -1,4 +1,5 @@
 #include "Input.h"
+#include "Input.h"
 
 #include <graphicsEngine/Window.h>
 
@@ -25,6 +26,12 @@ InputHandler::~InputHandler()
 {
 	delete[] keysCurrent;
 	delete[] keysPrevious;
+}
+
+void InputHandler::setMouseCentred(bool centred)
+{
+	this->mouseCentred = centred;
+	glfwSetInputMode(window->getWindow(), GLFW_CURSOR, centred ? GLFW_CURSOR_HIDDEN: GLFW_CURSOR_NORMAL);
 }
 
 void InputHandler::Update()
