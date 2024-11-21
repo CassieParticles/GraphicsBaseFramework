@@ -46,17 +46,19 @@ void InputHandler::Update()
 		//Get delta position
 		double mouseX, mouseY;
 		glfwGetCursorPos(window->getWindow(), &mouseX, &mouseY);
-		mousePositionX = mouseX - window->getWidth();
-		mousePositionY = mouseY - window->getHeight();
+		mousePositionX = mouseX - window->getWidth() / 2;
+		mousePositionY = mouseY - window->getHeight() / 2;
 		glfwSetCursorPos(window->getWindow(), window->getWidth() / 2, window->getHeight() / 2);
 	}
 	else
 	{
 		glfwGetCursorPos(window->getWindow(), &mousePositionX, &mousePositionY);
+
+		mousePositionX = min(max(0, mousePositionX), window->getWidth());
+		mousePositionY = min(max(0, mousePositionY), window->getHeight());
 	}
 
-	mousePositionX = min(max(0, mousePositionX), window->getWidth());
-	mousePositionY = min(max(0, mousePositionY), window->getHeight());
+
 
 }
 
