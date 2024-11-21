@@ -20,6 +20,15 @@ public:
 	//Key was released this frame
 	bool getKeyReleased(int key) { return !keysCurrent[key] && keysPrevious[key]; }
 
+	//MouseButton is currently held down
+	bool getMouseButtonDown(int mouseButton) { return mouseCurrent[mouseButton]; }
+	//MouseButton is currently not held down
+	bool getMouseButtonUp(int mouseButton) { return !mouseCurrent[mouseButton]; }
+	//MouseButton was pressed down this frame
+	bool getMouseButtonPressed(int mouseButton) { return mouseCurrent[mouseButton] && !mousePrevious[mouseButton]; }
+	//MouseButton was released this frame
+	bool getMouseButtonReleased(int mouseButton) { return !mouseCurrent[mouseButton] && mousePrevious[mouseButton]; }
+
 	double getCursorX() { return mousePositionX; }
 	double getCursorY() { return mousePositionY; }
 
@@ -39,6 +48,9 @@ protected:
 	//using std::move on a std::array is O(n), which is suboptimal, faster to just swap the pointers
 	bool* keysCurrent;
 	bool* keysPrevious;
+
+	bool* mouseCurrent;
+	bool* mousePrevious;
 
 	double mousePositionX;
 	double mousePositionY;

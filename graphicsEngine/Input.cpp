@@ -13,6 +13,9 @@ InputHandler::InputHandler(Window* window)
 	this->window = window;
 	keysCurrent = new bool[GLFW_KEY_LAST];
 	keysPrevious = new bool[GLFW_KEY_LAST];
+
+	mouseCurrent = new bool[GLFW_MOUSE_BUTTON_LAST];
+	mousePrevious = new bool[GLFW_MOUSE_BUTTON_LAST];
 }
 
 InputHandler::InputHandler(InputHandler&& other)
@@ -20,6 +23,14 @@ InputHandler::InputHandler(InputHandler&& other)
 	window = other.window;
 	keysCurrent = other.keysCurrent;
 	keysPrevious = other.keysPrevious;
+
+	mouseCurrent = other.mouseCurrent;
+	mousePrevious = other.mousePrevious;
+
+	mousePositionX = other.mousePositionX;
+	mousePositionY = other.mousePositionY;
+
+	mouseCentred = other.mouseCentred;
 }
 
 InputHandler::~InputHandler()
@@ -32,6 +43,10 @@ void InputHandler::setMouseCentred(bool centred)
 {
 	this->mouseCentred = centred;
 	glfwSetInputMode(window->getWindow(), GLFW_CURSOR, centred ? GLFW_CURSOR_HIDDEN: GLFW_CURSOR_NORMAL);
+	if (mouseCentred)
+	{
+		glfwSetCursorPos(window->getWindow(), window->getWidth() / 2, window->getHeight() / 2);
+	}
 }
 
 void InputHandler::Update()
@@ -40,11 +55,18 @@ void InputHandler::Update()
 
 	//Swap arrays, so previous array stores prior frame's key states
 	std::swap(keysCurrent, keysPrevious);
+	std::swap(mouseCurrent, mousePrevious);
 
 	//Update current keys
 	for (int i = 0; i < GLFW_KEY_LAST; ++i)
 	{
 		keysCurrent[i] = glfwGetKey(window->getWindow(), i);
+	}
+
+	//Update current mouse positions
+	for (int i = 0; i < GLFW_MOUSE_BUTTON_LAST; ++i)
+	{
+		mouseCurrent[i] = glfwGetMouseButton(window->getWindow(), i);
 	}
 
 	//Get mouse position
