@@ -20,6 +20,12 @@ public:
 	//Key was released this frame
 	bool getKeyReleased(int key) { return !keysCurrent[key] && keysPrevious[key]; }
 
+	double getCursorX() { return mousePositionX; }
+	double getCursorY() { return mousePositionY; }
+
+	void setMouseCentred(bool centred) { this->mouseCentred = centred; }
+	bool getMouseCentred() { return mouseCentred; }
+
 	//Update input
 	void Update();
 
@@ -34,6 +40,9 @@ protected:
 	bool* keysCurrent;
 	bool* keysPrevious;
 
-	//TODO: Add input for mouse
+	double mousePositionX;
+	double mousePositionY;
+
+	bool mouseCentred;
 	//TODO: Add input for joysticks
 };

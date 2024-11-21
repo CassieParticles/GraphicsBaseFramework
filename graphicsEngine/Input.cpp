@@ -39,6 +39,25 @@ void Input::Update()
 	{
 		keysCurrent[i] = glfwGetKey(window->getWindow(), i);
 	}
+
+	//Get mouse position
+	if (mouseCentred)
+	{
+		//Get delta position
+		double mouseX, mouseY;
+		glfwGetCursorPos(window->getWindow(), &mouseX, &mouseY);
+		mousePositionX = mouseX - window->getWidth();
+		mousePositionY = mouseY - window->getHeight();
+		glfwSetCursorPos(window->getWindow(), window->getWidth() / 2, window->getHeight() / 2);
+	}
+	else
+	{
+		glfwGetCursorPos(window->getWindow(), &mousePositionX, &mousePositionY);
+	}
+
+	mousePositionX = min(max(0, mousePositionX), window->getWidth());
+	mousePositionY = min(max(0, mousePositionY), window->getHeight());
+
 }
 
 
