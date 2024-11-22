@@ -1,4 +1,5 @@
 #include "Texture2D.h"
+
 #include <utility>
 
 Texture2D::Texture2D(ID3D11Device* device, D3D11_TEXTURE2D_DESC desc, void* initialData, int typeWidth):width{width},height{height},format{desc.Format}
@@ -21,6 +22,19 @@ void Texture2D::addTexture2D(ID3D11Device* device, D3D11_TEXTURE2D_DESC desc, vo
 	data.SysMemPitch = typeWidth * desc.Width;
 
 	device->CreateTexture2D(&desc, &data, &texture2D);
+
+	if (desc.BindFlags & D3D11_BIND_SHADER_RESOURCE)
+	{
+		addSRV(device);
+	}
+	if (desc.BindFlags & D3D11_BIND_RENDER_TARGET)
+	{
+		addRTV(device);
+	}
+	if (desc.BindFlags & D3D11_BIND_DEPTH_STENCIL)
+	{
+		addDSV(device);
+	}
 }
 
 void Texture2D::addSRV(ID3D11Device* device)
