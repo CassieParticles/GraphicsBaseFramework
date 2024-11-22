@@ -6,6 +6,7 @@ list(APPEND GRAPHICS "graphicsEngine/Input.cpp")
 list(APPEND GRAPHICS "graphicsEngine/Pipeline/Mesh.cpp")
 list(APPEND GRAPHICS "graphicsEngine/Pipeline/InputLayout.cpp")
 list(APPEND GRAPHICS "graphicsEngine/Pipeline/Shader.cpp")
+list(APPEND GRAPHICS "graphicsEngine/Pipeline/Texture2D.cpp")
 
 cmake_minimum_required (VERSION 3.8)
 
