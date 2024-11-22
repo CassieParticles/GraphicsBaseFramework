@@ -18,6 +18,10 @@ public:
 	void addSRV(ID3D11Device* device);
 	void addRTV(ID3D11Device* device);
 	void addDSV(ID3D11Device* device);
+
+	ID3D11ShaderResourceView* getSRV() { return srv.Get(); }
+	ID3D11RenderTargetView* getRTV() { return rtv.Get(); }
+	ID3D11DepthStencilView* getDSV() { return dsv.Get(); }
 protected:
 	ComPtr<ID3D11Texture2D> texture2D;
 	int width;
