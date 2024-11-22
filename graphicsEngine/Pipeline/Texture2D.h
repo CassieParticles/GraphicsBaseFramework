@@ -15,9 +15,7 @@ public:
 	//Create a texture2D, takes the description, and the size of each pixel in bytes (r32g32b32a32float is 16 bytes)
 	void addTexture2D(ID3D11Device* device, D3D11_TEXTURE2D_DESC desc, void* initialData, int typeWidth);
 
-	void addSRV(ID3D11Device* device);
-	void addRTV(ID3D11Device* device);
-	void addDSV(ID3D11Device* device);
+
 
 	ID3D11ShaderResourceView* getSRV() { return srv.Get(); }
 	ID3D11RenderTargetView* getRTV() { return rtv.Get(); }
@@ -28,7 +26,11 @@ protected:
 	int height;
 	DXGI_FORMAT format;
 
+	void addSRV(ID3D11Device* device);
+	void addRTV(ID3D11Device* device);
+	void addDSV(ID3D11Device* device);
+
 	ComPtr<ID3D11ShaderResourceView> srv;
 	ComPtr<ID3D11RenderTargetView> rtv;
 	ComPtr<ID3D11DepthStencilView> dsv;
-}
+};
