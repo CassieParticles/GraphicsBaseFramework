@@ -37,6 +37,8 @@ public:
 	int getHeight() { return height; }
 	float getAspectRatio() { return static_cast<float>(width) / height; }
 
+	HWND getHWND();
+
 	ComPtr<ID3D11Device> getDevice() { return device; }
 	ComPtr<ID3D11DeviceContext> getDeviceContext() { return deviceContext; }
 

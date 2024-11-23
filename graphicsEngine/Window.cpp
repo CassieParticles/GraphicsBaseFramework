@@ -1,4 +1,5 @@
 #include "Window.h"
+#include "Window.h"
 
 #include <glfw3.h>
 #include <d3dcompiler.h>
@@ -166,6 +167,11 @@ void Window::bindRenderTarget()
 {
 	deviceContext->OMSetRenderTargets(1, backBufferRTV.GetAddressOf(), backBufferDSV.Get());
 	deviceContext->RSSetViewports(1, &viewport);
+}
+
+HWND Window::getHWND()
+{
+	return glfwGetWin32Window(window);
 }
 
 void Window::UpdateF(InputHandler& input)
