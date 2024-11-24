@@ -26,7 +26,7 @@ endif()
 
 #Create library for ImGui
 file(GLOB IMGUIMAINSOURCE "${CMAKE_CURRENT_LIST_DIR}/imgui/*.cpp")
-list(APPEND DearImGuiSource ${IMGUISOURCE})
+list(APPEND DearImGuiSource ${IMGUIMAINSOURCE})
 list(APPEND DearImGuiSource "${CMAKE_CURRENT_LIST_DIR}/imgui/backends/imgui_impl_dx11.cpp")
 list(APPEND DearImGuiSource "${CMAKE_CURRENT_LIST_DIR}/imgui/backends/imgui_impl_glfw.cpp")
 

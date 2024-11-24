@@ -11,6 +11,10 @@
 
 #include <graphicsEngine/Input.h>
 
+#include <imgui.h>
+#include <imgui_impl_dx11.h>
+#include <imgui_impl_glfw.h>
+
 void checkError(HRESULT errorCode, const std::string& errorMessage)
 {
 	if (FAILED(errorCode))
@@ -111,6 +115,16 @@ Window::Window(const std::string& windowTitle, int windowWidth, int windowHeight
 	viewport.MaxDepth = 1;
 
 	input = std::make_unique<InputHandler>(this);
+
+	//Set up dearImGui
+	IMGUI_CHECKVERSION();
+	ImGui::CreateContext();
+	ImGuiIO& io = ImGui::GetIO();
+	io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
+	io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;
+
+	ImGui_ImplDX11_Init(device.Get(), deviceContext.Get());
+	ImGui_ImplGlfw_InitForOther(getWindow(), true);
 }
 
 Window::Window(Window&& other)
