@@ -21,7 +21,10 @@ void Texture2D::addTexture2D(ID3D11Device* device, D3D11_TEXTURE2D_DESC desc, vo
 	data.pSysMem = initialData;
 	data.SysMemPitch = typeWidth * desc.Width;
 
-	device->CreateTexture2D(&desc, &data, &texture2D);
+	//If initial data is null, pass in a nullptr to the subresource data
+	D3D11_SUBRESOURCE_DATA* dataPtr = initialData ? &data : nullptr;
+
+	device->CreateTexture2D(&desc, dataPtr, &texture2D);
 
 	if (desc.BindFlags & D3D11_BIND_SHADER_RESOURCE)
 	{
