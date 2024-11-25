@@ -124,7 +124,7 @@ Window::Window(const std::string& windowTitle, int windowWidth, int windowHeight
 	io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;
 
 	ImGui_ImplDX11_Init(device.Get(), deviceContext.Get());
-	ImGui_ImplGlfw_InitForOther(getWindow(), true);
+	//ImGui_ImplGlfw_InitForOther(getWindow(), true);
 }
 
 Window::Window(Window&& other)
