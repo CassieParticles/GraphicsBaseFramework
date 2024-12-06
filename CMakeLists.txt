@@ -10,7 +10,7 @@ list(APPEND GRAPHICS "graphicsEngine/Pipeline/Texture2D.cpp")
 
 cmake_minimum_required (VERSION 3.8)
 
-add_library(GraphicsFramework ${GRAPHICS})
+add_library(GraphicsFramework STATIC ${GRAPHICS})
 
 #Include framework header files and libraries used within framework
 target_include_directories(GraphicsFramework PUBLIC "${CMAKE_CURRENT_LIST_DIR}")
@@ -25,10 +25,14 @@ else()
 endif()
 
 #Create library for ImGui
-file(GLOB IMGUIMAINSOURCE "${CMAKE_CURRENT_LIST_DIR}/imgui/*.cpp")
-list(APPEND DearImGuiSource ${IMGUIMAINSOURCE})
+
+list(APPEND DearImGuiSource "${CMAKE_CURRENT_LIST_DIR}/imgui/imgui.cpp")
+list(APPEND DearImGuiSource "${CMAKE_CURRENT_LIST_DIR}/imgui/imgui_demo.cpp")
+list(APPEND DearImGuiSource "${CMAKE_CURRENT_LIST_DIR}/imgui/imgui_draw.cpp")
+list(APPEND DearImGuiSource "${CMAKE_CURRENT_LIST_DIR}/imgui/imgui_tables.cpp")
+list(APPEND DearImGuiSource "${CMAKE_CURRENT_LIST_DIR}/imgui/imgui_widgets.cpp")
 list(APPEND DearImGuiSource "${CMAKE_CURRENT_LIST_DIR}/imgui/backends/imgui_impl_dx11.cpp")
-list(APPEND DearImGuiSource "${CMAKE_CURRENT_LIST_DIR}/imgui/backends/imgui_impl_glfw.cpp")
+#list(APPEND DearImGuiSource "${CMAKE_CURRENT_LIST_DIR}/imgui/backends/imgui_impl_glfw.cpp")
 
 add_library(DearImGui STATIC ${DearImGuiSource})
 

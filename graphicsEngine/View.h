@@ -6,11 +6,9 @@
 
 class View
 {
-	template <typename T>
-	using ComPtr = Microsoft::WRL::ComPtr<T>;
 public:
 	View();
-	View(View& other) = delete;	//cannot have copy constructor, needs device to create new buffer
+	View(View& other);
 	View(View&& other);
 	~View() = default;
 	View& operator=(View& other) { return other; }
@@ -21,8 +19,5 @@ public:
 	DirectX::XMMATRIX getProjectionMatrix();
 
 protected:
-	DirectX::XMFLOAT3 position;
-	DirectX::XMFLOAT3 rotation;
-
 	DirectX::XMFLOAT4X4 projectionMatrix;
 };

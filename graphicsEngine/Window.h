@@ -8,9 +8,6 @@
 #include <wrl.h>
 #include <DirectXMath.h>
 
-
-
-
 class GLFWwindow;
 class InputHandler;
 
@@ -41,6 +38,7 @@ public:
 
 	ComPtr<ID3D11Device> getDevice() { return device; }
 	ComPtr<ID3D11DeviceContext> getDeviceContext() { return deviceContext; }
+
 
 	//Get a pointer to the input
 	InputHandler* getInput() { return input.get(); }
