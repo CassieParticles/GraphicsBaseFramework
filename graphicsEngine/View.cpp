@@ -1,5 +1,6 @@
 #include "View.h"
 #include "View.h"
+#include "View.h"
 
 #include <utility>
 
@@ -25,6 +26,11 @@ void View::setProjectionMatrixOrthographic(float viewWidth, float viewHeight, fl
 {
 	DirectX::XMMATRIX mat = DirectX::XMMatrixOrthographicLH(viewWidth, viewHeight, nearZ, farZ);
 	DirectX::XMStoreFloat4x4(&projectionMatrix, mat);
+}
+
+void View::setProjectionMatrix(DirectX::XMFLOAT4X4 projectionMatrix)
+{
+	this->projectionMatrix = projectionMatrix;
 }
 
 DirectX::XMMATRIX View::getProjectionMatrix()

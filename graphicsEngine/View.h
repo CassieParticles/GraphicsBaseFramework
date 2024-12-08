@@ -15,6 +15,7 @@ public:
 
 	void setProjectionMatrixPespective(float FOV, float aspectRatio, float nearZ, float farZ);
 	void setProjectionMatrixOrthographic(float viewWidth, float viewHeight, float nearZ, float farZ);
+	void setProjectionMatrix(DirectX::XMFLOAT4X4 projectionMatrix);
 	
 	DirectX::XMMATRIX getProjectionMatrix();
 
