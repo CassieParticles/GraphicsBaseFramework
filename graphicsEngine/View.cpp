@@ -1,12 +1,17 @@
 #include "View.h"
 #include "View.h"
 #include "View.h"
+#include "View.h"
 
 #include <utility>
 
 View::View() : projectionMatrix{}
 {
 	//Create the camera view cbuffer
+}
+
+View::View(View& other)
+{
 }
 
 View::View(View&& other)
